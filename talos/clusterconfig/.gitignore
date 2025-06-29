@@ -1,0 +1,7 @@
+kubernetes-k3s-master-1.yaml
+kubernetes-k3s-master-2.yaml
+kubernetes-k3s-master-3.yaml
+kubernetes-k3s-worker-1.yaml
+kubernetes-k3s-worker-2.yaml
+kubernetes-k3s-worker-3.yaml
+talosconfig
