@@ -26,6 +26,9 @@ import (
 	cilium_bgp_router_asn?: string & !=""
 	cilium_bgp_node_asn?: string & !=""
 	cilium_loadbalancer_mode?: *"dsr" | "snat"
+	bitwarden_organization_id: string & !=""
+	bitwarden_project_id: string & !=""
+	bitwarden_machine_access_token: string & !=""
 }
 
 #Config
