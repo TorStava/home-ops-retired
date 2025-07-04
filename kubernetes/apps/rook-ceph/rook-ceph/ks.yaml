@@ -37,6 +37,7 @@ spec:
       app.kubernetes.io/name: *app
   components:
     - ../../../../components/gatus/guarded
+    - ../../../../components/sops
   dependsOn:
     - name: rook-ceph
       namespace: *namespace
