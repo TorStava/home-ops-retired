@@ -121,8 +121,7 @@ spec:
     route:
       app:
         hostnames:
-          # - '{{ .Release.Name }}.${SECRET_DOMAIN}'
-          - '${SECRET_DOMAIN:=test}'
+          - '{{ .Release.Name }}.${SECRET_DOMAIN}'
         parentRefs:
           - name: internal
             namespace: kube-system
