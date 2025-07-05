@@ -30,6 +30,10 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   interval: 1h
   retryInterval: 2m
   path: ./kubernetes/apps/external-secrets/external-secrets/store
