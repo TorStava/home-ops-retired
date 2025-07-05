@@ -6,3 +6,4 @@ resources:
   - ./certificate.yaml
   - ./clustersecretstore.yaml
   - ./externalsecret.yaml
+  - ./secret.sops.yaml
