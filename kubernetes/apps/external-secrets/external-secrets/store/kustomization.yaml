@@ -6,5 +6,3 @@ resources:
   - ./certificate.yaml
   - ./clustersecretstore.yaml
   - ./externalsecret.yaml
-  - ./secret.sops.yaml
-  - ./secret_bwtoken.sops.yaml
