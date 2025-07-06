@@ -16,7 +16,7 @@
     nodes:
       cpu: true
       memory: true
-      show: true
+      show: false
       showLabel: true
 - openmeteo:
     label: Home
