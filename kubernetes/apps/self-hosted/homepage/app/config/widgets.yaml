@@ -9,25 +9,25 @@
 - kubernetes:
     cluster:
       cpu: true
-      #label: cluster
+      label: cluster
       memory: true
       show: true
       showLabel: true
     nodes:
       cpu: true
       memory: true
-      show: false
+      show: true
       showLabel: true
 - openmeteo:
     label: Home
     latitude: '{{HOMEPAGE_VAR_LATITUDE}}'
     longitude: '{{HOMEPAGE_VAR_LONGITUDE}}'
     timezone: '${TIMEZONE}'
-    units: imperial
+    units: metric
     cache: 5
 - datetime:
     text_size: x1
     format:
       dateStyle: long
       timeStyle: short
-      hour12: false
+      hourCycle: h23
