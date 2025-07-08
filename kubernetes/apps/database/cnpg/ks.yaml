@@ -142,7 +142,9 @@ spec:
       CNPG_LIMITS_MEMORY_HUGEPAGES: 1Gi
       CNPG_LIMITS_MEMORY: 2Gi
     substituteFrom:
-      - name: cluster-secrets
+      - name: cluster_secrets
+        kind: Secret
+      - name: cloudnative_pg
         kind: Secret
   components:
     - ../../../../components/cnpg/backup
