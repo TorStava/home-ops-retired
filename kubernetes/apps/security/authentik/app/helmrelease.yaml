@@ -47,8 +47,8 @@ spec:
     authentik:
       postgresql:
         host: postgres-cluster-rw.database.svc.cluster.local
-        user: ${AUTHENTIK_POSTGRES_USER}
-        password: ${AUTHENTIK_POSTGRES_PASS}
+        user: ${.AUTHENTIK_POSTGRES_USER}
+        password: ${.AUTHENTIK_POSTGRES_PASS}
       email:
         port: 587
         use_tls: true
