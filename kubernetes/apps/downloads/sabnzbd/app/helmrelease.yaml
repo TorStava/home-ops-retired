@@ -38,11 +38,7 @@ spec:
                 sabnzbd.downloads.svc,
                 sabnzbd.downloads.svc.cluster,
                 sabnzbd.downloads.svc.cluster.local,
-                sab.${SECRET_DOMAIN}
-              PUSHOVER_ENABLED: true
-            envFrom:
-              - secretRef:
-                  name: sabnzbd-secret
+                sabnzbd.${SECRET_DOMAIN}
             probes:
               liveness: &probes
                 enabled: true
