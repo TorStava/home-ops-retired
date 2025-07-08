@@ -277,7 +277,7 @@ spec:
             duration: 2160h
             isCA: false
             issuerRef:
-              name: cluster-selfsigned-issuer
+              name: selfsigned-issuer
               kind: ClusterIssuer
               group: cert-manager.io
             renewBefore: 360h
