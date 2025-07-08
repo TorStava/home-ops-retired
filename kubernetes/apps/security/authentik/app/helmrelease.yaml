@@ -92,11 +92,11 @@ spec:
     - targetPath: authentik.postgresql.user
       kind: Secret
       name: authentik-secret
-      valuesKey: AUTHENTIK_POSTGRES_USER
+      valuesKey: AUTHENTIK_POSTGRESQL__USER
     - targetPath: authentik.postgresql.password
       kind: Secret
       name: authentik-secret
-      valuesKey: AUTHENTIK_POSTGRES_PASS
+      valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD
     - targetPath: authentik.email.host
       kind: Secret
       name: authentik-secret
