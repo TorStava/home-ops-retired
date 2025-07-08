@@ -9,16 +9,10 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
+  components:
+    - ../../components/ext-auth
   interval: 1h
   path: ./kubernetes/apps/default/echo/app
-  postBuild:
-    substituteFrom:
-      - name: cluster-secrets
-        kind: Secret
   prune: true
   retryInterval: 2m
   sourceRef:
