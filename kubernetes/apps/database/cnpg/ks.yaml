@@ -192,6 +192,9 @@ spec:
       APP: *app
       VOLSYNC_CAPACITY: 2Gi
       GATUS_SUBDOMAIN: pg
+    substituteFrom:
+      - name: cluster-secrets
+        kind: Secret
   components:
     - ../../../../components/volsync
     - ../../../../components/gatus/guarded
