@@ -12,7 +12,7 @@ spec:
   components:
     - ../../../../components/gatus/guarded
     - ../../../../components/volsync
-    - ../../../../components/ext-auth
+    # - ../../../../components/ext-auth
     - ../../../../components/keda/nfs-scaler
   dependsOn:
     - name: keda
