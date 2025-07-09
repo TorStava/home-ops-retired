@@ -39,6 +39,9 @@ spec:
                 sabnzbd.downloads.svc.cluster,
                 sabnzbd.downloads.svc.cluster.local,
                 sabnzbd.${SECRET_DOMAIN}
+            envFrom:
+              - secretRef:
+                  name: sabnzbd-secret
             probes:
               liveness: &probes
                 enabled: true
