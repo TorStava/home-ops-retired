@@ -95,7 +95,6 @@ spec:
           gethomepage.dev/app: sabnzbd
           gethomepage.dev/widget.type: sabnzbd
           gethomepage.dev/widget.url: http://sabnzbd.downloads.svc.cluster.local
-          gethomepage.dev/widget.key: ${SABNZBD__API_KEY}
     persistence:
       config:
         existingClaim: sabnzbd
@@ -109,3 +108,8 @@ spec:
         type: emptyDir
       tmp:
         type: emptyDir
+    valuesFrom:
+      - targetPath: route.app.annotations.gethomepage.dev/widget.key
+        kind: Secret
+        name: sabnzbd-secret
+        valuesKey: SABNZBD__API_KEY
