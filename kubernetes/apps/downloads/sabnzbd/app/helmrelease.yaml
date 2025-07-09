@@ -95,7 +95,7 @@ spec:
           gethomepage.dev/app: sabnzbd
           gethomepage.dev/widget.type: sabnzbd
           gethomepage.dev/widget.url: http://sabnzbd.downloads.svc.cluster.local
-          gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_SABNZBD_TOKEN}}'
+          gethomepage.dev/widget.key: '{{`{{HOMEPAGE_VAR_SABNZBD_TOKEN}}`}}'
     persistence:
       config:
         existingClaim: sabnzbd
