@@ -9,3 +9,4 @@ resources:
   - ./keda/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
   - ./gatus/ks.yaml
+  - ./blackbox-exporter/ks.yaml
