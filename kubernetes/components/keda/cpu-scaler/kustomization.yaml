@@ -3,17 +3,22 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 components:
-  - ../prometheus-scaler
+  - ../nfs-scaler
 patches:
   - patch: |-
-      - op: replace
-        path: /spec/triggers/0/metadata/query
-        value: probe_success{instance=~".+:2049"}
+      - op: add
+        path: /spec/triggers/-
+        value:
+          type: cpu
+          metricType: Utilization
+          metadata:
+            value: '${SCALER_CPU_TARGET:="60"}'
     target: &target
       group: keda.sh
       kind: ScaledObject
   - patch: |-
+      # undo the nfs-scaler patch
       - op: replace
         path: /metadata/name
-        value: silent-${APP}
+        value: ${SCALER_SILENT}${APP}
     target: *target
