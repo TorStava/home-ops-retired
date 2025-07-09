@@ -80,6 +80,15 @@ spec:
           - name: internal
             namespace: kube-system
             sectionName: https
+        annotations:
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: Downloads
+          gethomepage.dev/name: Radarr
+          gethomepage.dev/icon: radarr.svg
+          gethomepage.dev/app: radarr
+          gethomepage.dev/widget.type: radarr
+          gethomepage.dev/widget.url: http://radarr.downloads.svc.cluster.local
+          gethomepage.dev/widget.key: '{{`{{HOMEPAGE_VAR_RADARR_TOKEN}}`}}'
     persistence:
       config:
         existingClaim: radarr
