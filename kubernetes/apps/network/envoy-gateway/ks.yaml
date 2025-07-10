@@ -53,11 +53,15 @@ spec:
     - &healthCheck
       apiVersion: &envoyVersion gateway.envoyproxy.io/v1alpha1
       kind: &clientKind ClientTrafficPolicy
-      name: client
+      name: external
       namespace: *namespace
     - <<: *healthCheck
+      name: internal
+    - <<: *healthCheck
       kind: &backendKind BackendTrafficPolicy
-      name: backend
+      name: external
+    - <<: *healthCheck
+      name: internal
   healthCheckExprs:
     - apiVersion: *gatewayVersion
       kind: *gatewayKind
