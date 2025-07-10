@@ -1,0 +1,81 @@
+---
+# yaml-language-server: $schema=https://schemas.tholinka.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app envoy-gateway
+  namespace: &namespace network
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  interval: 1h
+  path: ./kubernetes/apps/network/envoy-gateway/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *namespace
+  timeout: 15m
+---
+# yaml-language-server: $schema=https://schemas.tholinka.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app envoy-gateway-config
+  namespace: &namespace network
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  dependsOn:
+    - name: envoy-gateway
+      namespace: network
+  interval: 1h
+  path: ./kubernetes/apps/network/envoy-gateway/config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *namespace
+  timeout: 15m
+  healthChecks:
+    - &healthCheck
+      apiVersion: &gatewayVersion gateway.networking.k8s.io/v1
+      kind: &gatewayKind Gateway
+      name: external
+      namespace: *namespace
+    - <<: *healthCheck
+      name: internal
+    - <<: *healthCheck
+      name: internal-root
+    - &healthCheck
+      apiVersion: &envoyVersion gateway.envoyproxy.io/v1alpha1
+      kind: &clientKind ClientTrafficPolicy
+      name: client
+      namespace: *namespace
+    - <<: *healthCheck
+      kind: &backendKind BackendTrafficPolicy
+      name: backend
+  healthCheckExprs:
+    - apiVersion: *gatewayVersion
+      kind: *gatewayKind
+      current: |-
+        status.listeners.exists(l,
+          l.conditions.filter(e, e.type == 'Accepted').exists(e, e.status == 'True') &&
+          l.conditions.filter(e, e.type == 'Programmed').exists(e, e.status == 'True') &&
+          l.conditions.filter(e, e.type == 'OverlappingCertificates').all(e, e.status == 'False'))
+      failed: |-
+        status.listeners.exists(l,
+          l.conditions.filter(e, e.type == 'Accepted').exists(e, e.status == 'False') ||
+          l.conditions.filter(e, e.type == 'Programmed').exists(e, e.status == 'False') ||
+          l.conditions.filter(e, e.type == 'OverlappingCertificates').exists(e, e.status == 'True'))
+    - &expr
+      apiVersion: *envoyVersion
+      kind: *clientKind
+      current: status.ancestors.exists(e, e.conditions.filter(e, e.type == 'Accepted').exists(e, e.status == 'True'))
+      failed: status.ancestors.exists(e, e.conditions.filter(e, e.type == 'Accepted').exists(e, e.status == 'False'))
+    - <<: *expr
+      kind: *backendKind
