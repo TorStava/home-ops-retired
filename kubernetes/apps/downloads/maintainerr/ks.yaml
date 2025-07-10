@@ -12,7 +12,7 @@ spec:
   components:
     - ../../../../components/gatus/guarded
     - ../../../../components/volsync
-    - ../../../../components/ext-auth
+    # - ../../../../components/ext-auth
   dependsOn:
     - name: rook-ceph-cluster
       namespace: rook-ceph
