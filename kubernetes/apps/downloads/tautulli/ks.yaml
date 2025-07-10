@@ -19,7 +19,7 @@ spec:
     - name: rook-ceph-cluster
       namespace: rook-ceph
   interval: 1h
-  path: ./kubernetes/apps/downloads/sonarr/app
+  path: ./kubernetes/apps/downloads/tautulli/app
   postBuild:
     substitute:
       APP: *app
