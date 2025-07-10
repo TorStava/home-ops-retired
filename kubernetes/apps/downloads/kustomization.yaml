@@ -14,3 +14,4 @@ resources:
   - ./jellyseerr/ks.yaml
   - ./recyclarr/ks.yaml
   - ./maintainerr/ks.yaml
+  - ./tautulli/ks.yaml
