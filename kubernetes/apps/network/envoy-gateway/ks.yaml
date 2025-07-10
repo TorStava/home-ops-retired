@@ -61,6 +61,7 @@ spec:
       kind: &backendKind BackendTrafficPolicy
       name: external
     - <<: *healthCheck
+      kind: *backendKind
       name: internal
   healthCheckExprs:
     - apiVersion: *gatewayVersion
