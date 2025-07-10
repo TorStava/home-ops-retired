@@ -29,6 +29,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
+      test: test
   dependsOn:
     - name: envoy-gateway
       namespace: network
