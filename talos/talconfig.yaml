@@ -144,3 +144,9 @@ controlPlane:
     - "@./patches/controller/admission-controller-patch.yaml"
     - "@./patches/controller/cluster.yaml"
 
+# Worker patches
+worker:
+  patches:
+    - "@./patches/worker/machine-kubelet.yaml"
+    - "@./patches/worker/machine-sysctls.yaml"
+

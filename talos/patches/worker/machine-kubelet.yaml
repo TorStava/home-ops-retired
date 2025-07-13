@@ -1,0 +1,14 @@
+machine:
+  kubelet:
+    extraMounts:
+      - destination: /var/openebs/local
+        type: bind
+        source: /var/openebs/local
+        options:
+          - bind
+          - rshared
+          - rw
+  disks:
+    - device: /dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2
+      partitions:
+        - mountpoint: /var/mnt/extra
