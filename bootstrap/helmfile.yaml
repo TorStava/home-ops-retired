@@ -40,7 +40,40 @@ releases:
     chart: oci://quay.io/jetstack/charts/cert-manager
     version: v1.17.2
     values: ['../kubernetes/apps/cert-manager/cert-manager/app/helm/values.yaml']
+    hooks:
+      - # Apply cluster secret store configuration
+        # We need this for bitwarden, which we need for the cluster-secrets to get populated
+        # without those, flux fails to install anything
+        events: [postsync]
+        command: kubectl
+        args:
+          - apply
+          - --namespace=cert-manager
+          - --server-side
+          - --field-manager=kustomize-controller
+          - --filename
+          - ../kubernetes/apps/cert-manager/cert-manager/app/clusterissuers.yaml
+          - --wait=true
+        showlogs: true
+      - # bitwarden needs its cert so it can come up, othewrise it just stays pending
+        events: [postsync]
+        command: kubectl
+        args:
+          - apply
+          - --namespace=external-secrets
+          - --server-side
+          - --field-manager=kustomize-controller
+          - --filename
+          - ../kubernetes/apps/external-secrets/external-secrets/store/certificate.yaml
+          - --wait=true
     needs: ['kube-system/spegel']
+
+  - name: external-secrets
+    namespace: external-secrets
+    chart: oci://ghcr.io/external-secrets/charts/external-secrets
+    version: 0.18.2
+    values: [../kubernetes/apps/external-secrets/external-secrets/app/helm/values.yaml]
+    needs: [external-secrets/cert-manager]
 
   - name: flux-operator
     namespace: flux-system
