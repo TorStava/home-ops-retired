@@ -73,7 +73,7 @@ releases:
     chart: oci://ghcr.io/external-secrets/charts/external-secrets
     version: 0.18.2
     values: [../kubernetes/apps/external-secrets/external-secrets/app/helm/values.yaml]
-    needs: [external-secrets/cert-manager]
+    needs: [cert-manager/cert-manager]
 
   - name: flux-operator
     namespace: flux-system
