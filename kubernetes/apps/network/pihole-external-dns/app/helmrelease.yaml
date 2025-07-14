@@ -48,7 +48,7 @@ spec:
             name: &secret pihole-external-dns-secret
             key: *name
     extraArgs:
-      - --pihole-api-version=5
+      - --pihole-api-version=6
       - --pihole-server=http://192.168.1.2
     triggerLoopOnEvent: true
     policy: sync
