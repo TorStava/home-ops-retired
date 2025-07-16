@@ -1,9 +1,12 @@
 ---
 autoDirectNodeRoutes: true
 bpf:
+  datapathMode: netkit
   masquerade: true
+  preallocateMaps: true
   # Ref: https://github.com/siderolabs/talos/issues/10002
   hostLegacyRouting: true
+  tproxy: true # breaks accessing cilium gateway ips from inside cluster
 cni:
   # Required for pairing with Multus CNI
   exclusive: false
@@ -18,16 +21,12 @@ dashboards:
 endpointRoutes:
   enabled: true
 envoy:
-  rollOutPods: true
-  prometheus:
-     serviceMonitor:
-       enabled: true
-gatewayAPI:
-  enabled: true
+  enabled: false
 hubble:
   enabled: false
 ipam:
   mode: kubernetes
+enableIPv4BIGTCP: true
 ipv4NativeRoutingCIDR: "10.42.0.0/16"
 k8sServiceHost: 127.0.0.1
 k8sServicePort: 7445
@@ -46,7 +45,7 @@ operator:
     enabled: true
     serviceMonitor:
       enabled: true
-  replicas: 1
+  replicas: 2
   rollOutPods: true
 prometheus:
   enabled: true
