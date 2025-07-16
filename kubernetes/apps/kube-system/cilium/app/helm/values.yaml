@@ -4,8 +4,6 @@ bpf:
   datapathMode: netkit
   masquerade: true
   preallocateMaps: true
-  # Ref: https://github.com/siderolabs/talos/issues/10002
-  hostLegacyRouting: true
   tproxy: true # breaks accessing cilium gateway ips from inside cluster
 cni:
   # Required for pairing with Multus CNI
