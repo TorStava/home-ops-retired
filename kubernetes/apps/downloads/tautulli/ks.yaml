@@ -11,8 +11,8 @@ spec:
       app.kubernetes.io/name: *app
   components:
     - ../../../../components/gatus/guarded
+    - ../../../../components/gatus/internal
     - ../../../../components/volsync
-    - ../../../../components/ext-auth
   dependsOn:
     - name: keda
       namespace: observability
