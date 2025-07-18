@@ -12,8 +12,8 @@ cgroup:
   automount:
     enabled: false
   hostRoot: /sys/fs/cgroup
-# NOTE: devices might need to be set if you have more than one active NIC on your hosts
-devices: ens+
+# Use a more generic device pattern that should work with various network setups
+devices: ".*"
 dashboards:
   enabled: true
 endpointRoutes:

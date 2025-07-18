@@ -17,9 +17,9 @@ metadata:
   name: l2-policy
 spec:
   loadBalancerIPs: true
-  # Specify the network interface for L2 announcements
+  # Use a more generic interface pattern that should work with various network setups
   interfaces:
-    - ^ens[0-9]+
+    - ".*"
   nodeSelector:
     matchLabels:
       kubernetes.io/os: linux
