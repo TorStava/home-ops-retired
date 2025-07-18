@@ -17,9 +17,9 @@ metadata:
   name: l2-policy
 spec:
   loadBalancerIPs: true
-  # Use a more generic interface pattern that should work with various network setups
+  # Use a pattern that matches the actual network interfaces
   interfaces:
-    - ".*"
+    - "^(ens|eth|bond|br|veth|lxcd)[0-9a-f]*"
   nodeSelector:
     matchLabels:
       kubernetes.io/os: linux
