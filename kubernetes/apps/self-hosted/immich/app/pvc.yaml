@@ -8,12 +8,12 @@ spec:
   capacity:
     storage: 1T
   accessModes: ['ReadWriteMany']
-  storageClassName: manual
+  storageClassName: immich-nfs
   nfs:
     path: ${NAS_PATH}/photos
     server: ${NAS_IP}
     mountOptions:
-      - nfsvers=4.2
+      - nfsvers=4.1
       - nconnect=16
       - hard
       - noatime
@@ -24,7 +24,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: immich-photos
 spec:
-  storageClassName: manual
+  storageClassName: immich-nfs
   accessModes: ['ReadWriteMany']
   resources:
     requests:
