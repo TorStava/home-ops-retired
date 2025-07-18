@@ -12,8 +12,8 @@ cgroup:
   automount:
     enabled: false
   hostRoot: /sys/fs/cgroup
-# Use a more generic device pattern that should work with various network setups
-devices: ".*"
+# Use a pattern that matches common network interface names
+devices: "^(ens|eth|bond|br|veth|lxcd)[0-9a-f]*"
 dashboards:
   enabled: true
 endpointRoutes:
