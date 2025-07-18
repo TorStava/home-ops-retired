@@ -11,10 +11,8 @@ metadata:
     gethomepage.dev/name: Truenas
     gethomepage.dev/icon: truenas.svg
     gethomepage.dev/widget.type: truenas
-    gethomepage.dev/widget.url: https://truenas.${SECRET_DOMAIN}
+    gethomepage.dev/widget.url: http://${NAS_IP}
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_TRUENAS_TOKEN}}'
-    gethomepage.dev/widget.version: '2'
-    gethomepage.dev/pod-selector: app.kubernetes.io/name=truenas
 spec:
   hostnames:
     - 'truenas.${SECRET_DOMAIN}'
