@@ -19,9 +19,6 @@ spec:
     namespace: flux-system
   targetNamespace: *namespace
   timeout: 5m
-  dependsOn:
-    - name: crds-ready
-      namespace: flux-system
   healthChecks:
     - apiVersion: &esVersion external-secrets.io/v1
       kind: &esKind ExternalSecret
