@@ -40,7 +40,7 @@ spec:
         controller: *app
         ports:
           http:
-            port: 8265
+            port: &port 8265
       server:
         controller: *app
         type: LoadBalancer
@@ -68,7 +68,7 @@ spec:
               tdarr
             )
         rules:
-          - backendRefs: [{name: app, port: http}]
+          - backendRefs: [{name: app, port: *port}]
     persistence:
       config:
         enabled: true
