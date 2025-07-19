@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: immich-lb
+  namespace: self-hosted
   annotations:
     lbipam.cilium.io/ips: ${CLUSTER_LB_IMMICH}
 spec:
