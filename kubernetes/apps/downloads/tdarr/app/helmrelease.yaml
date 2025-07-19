@@ -61,7 +61,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/name: Tdarr
-          gethomepage.dev/group: Media
+          gethomepage.dev/group: Downloads
           gethomepage.dev/icon: tdarr.png
           gethomepage.dev/pod-selector: >-
             app in (
