@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: &app plex
+  namespace: external
+  labels:
+    app.kubernetes.io/name: *app
+    app.kubernetes.io/instance: *app
+spec:
+  type: ClusterIP
+  ports:
+    - port: 32400
+      protocol: TCP
+      targetPort: 32400
+
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: &app plex
+  namespace: external
+  labels:
+    app.kubernetes.io/name: *app
+    app.kubernetes.io/instance: *app
+subsets:
+  - addresses:
+      - ip: ${PLEX_IP}
+    ports:
+      - port: 32400
