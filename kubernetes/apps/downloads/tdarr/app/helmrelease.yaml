@@ -38,6 +38,7 @@ spec:
     service:
       app:
         controller: *app
+        nameOverride: *app
         ports:
           http:
             port: 8265
