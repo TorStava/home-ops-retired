@@ -47,21 +47,29 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
     controllers:
       tdarr-node:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        replicas: 2
         containers:
           node:
             image:
               repository: haveagitgat/tdarr_node
               tag: 2.45.01@sha256:7e98e8b97350101bda7af1673e473edd65915f10a0c5ae040487dec220a870c8
             env:
-            - name: nodeID
-              value: kube-node
-            - name: serverIP
-              value: tdarr-server.downloads.svc.cluster.local.
-            - name: serverPort
-              value: 8266
+              TZ: ${TIMEZONE}
+              PUID: 568
+              PGID: 568
+              serverIP: tdarr-server.downloads.svc.cluster.local.
+              serverPort: 8266
+              ffmpegPath: /usr/local/bin/ffmpeg
+              nodeName:
+                valueFrom:
+                  fieldRef:
+                    fieldPath: spec.nodeName
             resources:
               requests:
-                cpu: 100m
+                cpu: 10m
+                memory: 250Mi
               limits:
                 cpu: 2
     service:
