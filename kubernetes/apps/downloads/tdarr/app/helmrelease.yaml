@@ -85,4 +85,4 @@ spec:
       data:
         type: nfs
         server: ${NAS_IP}
-        path: ${NAS_PATH}
+        path: ${NAS_PATH}/data
