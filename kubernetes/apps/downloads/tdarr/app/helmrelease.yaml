@@ -51,10 +51,13 @@ spec:
             enabled: true
             protocol: TCP
             port: 8266
-    ingress:
+    route:
       app:
-        enabled: true
-        className: internal
+        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/name: Tdarr
@@ -64,16 +67,8 @@ spec:
             app in (
               tdarr
             )
-        hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        tls:
-          - hosts:
-              - *host
+        rules:
+          - backendRefs: [{}]
     persistence:
       config:
         enabled: true
