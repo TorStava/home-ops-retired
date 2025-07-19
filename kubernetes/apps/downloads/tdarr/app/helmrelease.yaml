@@ -38,7 +38,6 @@ spec:
     service:
       app:
         controller: *app
-        nameOverride: *app
         ports:
           http:
             port: 8265
@@ -69,7 +68,7 @@ spec:
               tdarr
             )
         rules:
-          - backendRefs: [{name: *app, port: 8265}]
+          - backendRefs: [{name: app, port: http}]
     persistence:
       config:
         enabled: true
