@@ -12,8 +12,11 @@ cgroup:
   automount:
     enabled: false
   hostRoot: /sys/fs/cgroup
-# Use a pattern that matches common network interface names
-devices: "^(ens|eth|bond|br|veth|lxcd)[0-9a-f]*"
+# Use a pattern that matches common network interface names including Proxmox interfaces
+# If this fails, Cilium will auto-detect the device
+devices: "^(ens|eth|bond|br|veth|lxc|vmbr|tap|vnet)[0-9a-f]*"
+# Enable auto-detection as fallback
+enableAutoDirectRouting: true
 dashboards:
   enabled: true
 endpointRoutes:
