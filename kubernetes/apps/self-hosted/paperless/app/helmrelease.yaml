@@ -60,10 +60,10 @@ spec:
               PAPERLESS_OCR_LANGUAGES: eng
               PAPERLESS_OCR_LANGUAGE: eng
               # Configure redis integration
-              PAPERLESS_REDIS: redis://dragonfly-cluster.database.svc.cluster.local:6379/1
+              PAPERLESS_REDIS: redis://dragonfly-cluster.database.svc.cluster.local:6379
               # Configure user permissions
               USERMAP_UID: '568'
-              USERMAP_GID: '568'
+              USERMAP_GID: '1234'
               # optional integrations
               PAPERLESS_TIKA_ENABLED: 1
               PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://localhost:3000
