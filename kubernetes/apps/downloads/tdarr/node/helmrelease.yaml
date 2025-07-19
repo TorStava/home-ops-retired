@@ -47,9 +47,9 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
     controllers:
       tdarr-node:
+        type: daemonset
         annotations:
           reloader.stakater.com/auto: "true"
-        replicas: 2
         containers:
           node:
             image:
