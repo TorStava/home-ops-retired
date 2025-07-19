@@ -24,6 +24,9 @@ hubble:
   enabled: false
 ipam:
   mode: kubernetes
+  # Disable IPv6 to prevent dual-stack issues
+  ipv6:
+    enabled: false
 enableIPv4BIGTCP: true
 ipv4NativeRoutingCIDR: "10.42.0.0/16"
 k8sServiceHost: 127.0.0.1

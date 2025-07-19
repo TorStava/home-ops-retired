@@ -45,7 +45,7 @@ spec:
         controller: *app
         type: LoadBalancer
         loadBalancerIP: ${CLUSTER_LB_TDARR}
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
         ports:
           server:
             enabled: true
