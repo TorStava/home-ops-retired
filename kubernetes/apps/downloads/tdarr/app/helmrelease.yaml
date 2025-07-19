@@ -68,7 +68,9 @@ spec:
               tdarr
             )
         rules:
-          - backendRefs: [{name: app, port: *port}]
+          - backendRefs:
+              - name: "tdarr-app"
+                port: *port
     persistence:
       config:
         enabled: true
