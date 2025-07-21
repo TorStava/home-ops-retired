@@ -105,8 +105,7 @@ spec:
               - '--chromium-allow-list=file:///tmp/.*'
             resources:
               limits:
-                cpu: 500m
-                memory: 512Mi
+                memory: 1Gi
               requests:
                 cpu: 10m
                 memory: 256Mi
