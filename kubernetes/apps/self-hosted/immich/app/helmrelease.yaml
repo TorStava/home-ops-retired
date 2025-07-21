@@ -112,7 +112,11 @@ spec:
             size: 1440
         machineLearning:
           clip:
-            modelName: ViT-B-16-SigLIP2__webli
+            modelName: nllb-clip-large-siglip__mrl
+        facialRecognition:
+          modelName: antelopev2
+          maxDistance: 0.4
+          minFaces: 20
         metadata:
           faces:
             import: true
