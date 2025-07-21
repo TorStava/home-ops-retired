@@ -113,10 +113,10 @@ spec:
         machineLearning:
           clip:
             modelName: nllb-clip-large-siglip__mrl
-        facialRecognition:
-          modelName: antelopev2
-          maxDistance: 0.4
-          minFaces: 20
+          facialRecognition:
+            modelName: antelopev2
+            maxDistance: 0.4
+            minFaces: 20
         metadata:
           faces:
             import: true
