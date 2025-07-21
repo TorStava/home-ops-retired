@@ -78,7 +78,7 @@ spec:
       requests:
         cpu: 23m
       limits:
-        memory: 219M
+        memory: 1Gi
     datasources:
       datasources.yaml:
         apiVersion: 1
