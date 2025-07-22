@@ -17,8 +17,10 @@ spec:
   dependsOn:
     - name: keda
       namespace: observability
-    - name: storage-ready
-      namespace: flux-system
+    - name: volsync
+      namespace: volsync-system
+    - name: rook-ceph
+      namespace: rook-ceph
   interval: 1h
   retryInterval: 2m
   path: ./kubernetes/apps/self-hosted/calibre-web-automated/app
