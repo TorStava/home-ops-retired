@@ -25,3 +25,7 @@ layout:
     style: row
     columns: 4
     icon: mdi-server
+  Downloads:
+    style: row
+    columns: 4
+    icon: mdi-download
