@@ -89,7 +89,7 @@ spec:
       media:
         type: nfs
         server: ${NAS_IP}
-        path: ${NAS_PATH}/ebooks/CalibreDB
+        path: ${NAS_PATH}/data/ebooks/CalibreDB
         globalMounts: # needs to be set to nobody:nobody perms on setup of a fresh volume, because of the weird stuff s6 does, then set it to 1000:1000
           - path: /calibre-library
             subPath: Ebooks
