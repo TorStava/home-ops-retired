@@ -120,6 +120,16 @@ qm set 8$((i))0 --scsi0 local-zfs:256,iothread=1,ssd=1,discard=on
 done
 ```
 
+Add bridge networks.
+```shell
+for i in $(seq 1 6);
+do
+qm set 8$((i))0 --net1 virtio,bridge=vmbr1
+qm set 8$((i))0 --net2 virtio,bridge=vmbr2
+qm set 8$((i))0 --net3 virtio,bridge=vmbr3
+done
+```
+
 ## Passthrough physical disks
 Find disk id's on the Proxmox host:
 
