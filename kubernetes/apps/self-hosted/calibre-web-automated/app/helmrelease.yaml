@@ -73,11 +73,9 @@ spec:
         hostnames:
           - calibre.${SECRET_DOMAIN}
         parentRefs:
-          - name: external
+          - name: internal
             namespace: network
             sectionName: https
-        rules:
-          - backendRefs: [{}]
         annotations:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Media
