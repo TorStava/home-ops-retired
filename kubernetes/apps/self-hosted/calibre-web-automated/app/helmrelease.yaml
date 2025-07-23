@@ -33,6 +33,18 @@ spec:
               PUID: 568
               PGID: 1234
               TZ: ${TIMEZONE}
+              # Performance optimizations for large libraries
+              CWA_CONFIG_DIR: /config
+              CWA_DB_CONFIG_SQLITE_POOL_SIZE: 10
+              CWA_DB_CONFIG_SQLITE_POOL_TIMEOUT: 20
+              CWA_DB_CONFIG_SQLITE_POOL_RECYCLE: 3600
+              CWA_DB_CONFIG_SQLITE_POOL_MAX_OVERFLOW: 20
+              CWA_DB_CONFIG_SQLITE_POOL_PRE_PING: true
+              CWA_DB_CONFIG_SQLITE_POOL_ECHO: false
+              # Disable automatic library scanning on startup
+              CWA_CONFIG_LIBRARY_SCAN_ON_STARTUP: false
+              # Increase timeout for operations
+              CWA_CONFIG_OPERATION_TIMEOUT: 300
             probes:
               liveness:
                 enabled: true
@@ -49,9 +61,10 @@ spec:
               # capabilities: { drop: ['ALL'] } # dumb s6 image needs to start as root and then it chowns and drops capabilities
             resources:
               requests:
-                cpu: 5m
-                memory: 128Mi
+                cpu: 100m
+                memory: 512Mi
               limits:
+                cpu: 1000m
                 memory: 2Gi
     # defaultPodOptions: # dumb s6 image
     #   automountServiceAccountToken: false
