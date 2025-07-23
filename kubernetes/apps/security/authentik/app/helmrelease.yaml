@@ -88,6 +88,15 @@ spec:
     prometheus:
       rules:
         enabled: true
+    outpost:
+      enabled: true
+      type: embedded
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          memory: 256Mi
   valuesFrom:
     - targetPath: authentik.postgresql.user
       kind: Secret
