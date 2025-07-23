@@ -50,4 +50,4 @@ spec:
       - "X-Rate-Limit-Remaining"
       - "X-Rate-Limit-Reset"
     allowCredentials: true
-    maxAge: "86400"
+    maxAge: "24h"
