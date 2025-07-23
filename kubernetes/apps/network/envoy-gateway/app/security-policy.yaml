@@ -10,19 +10,9 @@ spec:
     kind: Gateway
     name: external
     namespace: network
-  rateLimit:
-    global:
-      rules:
-        - clientSelectors:
-            - headers:
-                - name: "x-forwarded-for"
-                  value: ".*"
-          rateLimit:
-            requests: 100
-            unit: minute
   cors:
     allowOrigins:
-      - exact: "https://*.${SECRET_DOMAIN}"
+      - "https://*.${SECRET_DOMAIN}"
     allowMethods:
       - GET
       - POST
@@ -37,4 +27,4 @@ spec:
       - "Content-Length"
       - "Content-Range"
     allowCredentials: true
-    maxAge: 86400
+    maxAge: "86400"
