@@ -1,0 +1,32 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: cloudflare-tunnel-to-envoy
+  namespace: network
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: cloudflare-tunnel
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: envoy
+            app.kubernetes.io/component: proxy
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+            - port: "80"
+              protocol: TCP
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: envoy
+            app.kubernetes.io/component: proxy
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+            - port: "80"
+              protocol: TCP
