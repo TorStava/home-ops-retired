@@ -20,6 +20,16 @@ spec:
             - port: "80"
               protocol: TCP
   egress:
+    # Allow DNS access to cluster DNS
+    - toEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+            - port: "53"
+              protocol: TCP
+    # Allow access to Envoy Gateway
     - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: envoy
@@ -29,4 +39,17 @@ spec:
             - port: "443"
               protocol: TCP
             - port: "80"
+              protocol: TCP
+    # Allow access to Cloudflare services and external DNS
+    - toEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+            - port: "80"
+              protocol: TCP
+            - port: "53"
+              protocol: UDP
+            - port: "53"
               protocol: TCP
