@@ -32,6 +32,7 @@ spec:
               CACHE_DIR: /cache
               PUID: 568
               PGID: 1234
+              TZ: ${TIMEZONE}
             probes:
               liveness:
                 enabled: true
@@ -66,7 +67,7 @@ spec:
       app:
         ports:
           http:
-            port: 8083
+            port: &port 8083
 
     route:
       app:
@@ -83,7 +84,7 @@ spec:
           gethomepage.dev/icon: calibre.svg
           gethomepage.dev/app: calibre
           gethomepage.dev/widget.type: calibreweb
-          gethomepage.dev/widget.url: http://calibre-web-automated.self-hosted.svc.cluster.local
+          gethomepage.dev/widget.url: http://calibre-web-automated.self-hosted.svc.cluster.local:*port
           gethomepage.dev/widget.username: '{{`{{HOMEPAGE_VAR_CALIBRE_USER}}`}}'
           gethomepage.dev/widget.password: '{{`{{HOMEPAGE_VAR_CALIBRE_PASS}}`}}'
     persistence:
