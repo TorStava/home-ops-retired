@@ -1,0 +1,40 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: envoy-gateway-security
+  namespace: network
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: external
+    namespace: network
+  rateLimit:
+    global:
+      rules:
+        - clientSelectors:
+            - headers:
+                - name: "x-forwarded-for"
+                  value: ".*"
+          rateLimit:
+            requests: 100
+            unit: minute
+  cors:
+    allowOrigins:
+      - exact: "https://*.${SECRET_DOMAIN}"
+    allowMethods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+    allowHeaders:
+      - "Content-Type"
+      - "Authorization"
+      - "X-Requested-With"
+    exposeHeaders:
+      - "Content-Length"
+      - "Content-Range"
+    allowCredentials: true
+    maxAge: 86400

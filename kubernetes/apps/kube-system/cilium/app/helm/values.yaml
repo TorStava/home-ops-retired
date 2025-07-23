@@ -4,7 +4,7 @@ bpf:
   datapathMode: netkit
   masquerade: true
   preallocateMaps: true
-  tproxy: true # breaks accessing cilium gateway ips from inside cluster
+  tproxy: false # Disabled to fix Cloudflare Tunnel connectivity issues
 cni:
   # Required for pairing with Multus CNI
   exclusive: false
@@ -42,6 +42,9 @@ loadBalancer:
   algorithm: maglev
   mode: "dsr"
 localRedirectPolicy: true
+# Connection tracking configuration for better stability
+enableActiveConnectionTracking: true
+enableConnectionTracking: true
 operator:
   dashboards:
     enabled: true

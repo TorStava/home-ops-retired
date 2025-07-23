@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: envoy-network-external
+  namespace: network
+  labels:
+    app.kubernetes.io/name: envoy
+    app.kubernetes.io/component: proxy
+    type: external
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 10080
+      protocol: TCP
+    - name: https
+      port: 443
+      targetPort: 10443
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: envoy
+    app.kubernetes.io/component: proxy
+    gateway.envoyproxy.io/owning-gateway-name: external
+    gateway.envoyproxy.io/owning-gateway-namespace: network
