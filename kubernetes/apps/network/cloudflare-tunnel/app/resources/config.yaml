@@ -5,15 +5,10 @@ originRequest:
   # Add connection timeout and retry settings
   connectTimeout: 30s
   noTLSVerify: false
-  # Add health check settings
-  healthCheck:
-    enabled: true
-    interval: 30s
-    timeout: 10s
 
 ingress:
   - hostname: "${SECRET_DOMAIN}"
-    service: &svc https://envoy-network-external.network.svc.cluster.local
+    service: &svc https://envoy-network-external-b1d9befd.network.svc.cluster.local
   - hostname: "*.${SECRET_DOMAIN}"
     service: *svc
   - service: http_status:404
