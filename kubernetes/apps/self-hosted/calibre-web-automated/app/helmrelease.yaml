@@ -86,8 +86,8 @@ spec:
               - name: calibre-web-automated
                 port: 8083
             timeouts:
-              request: 300s
-              backendRequest: 300s
+              request: 60s
+              backendRequest: 60s
         annotations:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Media
