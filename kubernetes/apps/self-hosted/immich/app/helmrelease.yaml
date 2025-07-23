@@ -155,15 +155,20 @@ spec:
         liveness: &probes
           spec:
             failureThreshold: 10
-        readiness: *probes
+            timeoutSeconds: 30
+        readiness:
+          spec:
+            failureThreshold: 10
+            timeoutSeconds: 30
+            periodSeconds: 10
 
     machine-learning:
       resources:
         requests:
-          cpu: 300m
+          cpu: 500m
           memory: 2Gi
         limits:
-          cpu: 4000m
+          cpu: 2000m
           memory: 6Gi
       persistence:
         cache:
