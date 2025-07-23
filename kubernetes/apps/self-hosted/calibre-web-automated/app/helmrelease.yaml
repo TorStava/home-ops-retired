@@ -33,18 +33,6 @@ spec:
               PUID: 568
               PGID: 1234
               TZ: ${TIMEZONE}
-              # Performance optimizations for large libraries
-              CWA_CONFIG_DIR: /config
-              CWA_DB_CONFIG_SQLITE_POOL_SIZE: 10
-              CWA_DB_CONFIG_SQLITE_POOL_TIMEOUT: 20
-              CWA_DB_CONFIG_SQLITE_POOL_RECYCLE: 3600
-              CWA_DB_CONFIG_SQLITE_POOL_MAX_OVERFLOW: 20
-              CWA_DB_CONFIG_SQLITE_POOL_PRE_PING: true
-              CWA_DB_CONFIG_SQLITE_POOL_ECHO: false
-              # Disable automatic library scanning on startup
-              CWA_CONFIG_LIBRARY_SCAN_ON_STARTUP: false
-              # Increase timeout for operations
-              CWA_CONFIG_OPERATION_TIMEOUT: 300
             probes:
               liveness:
                 enabled: true
@@ -53,8 +41,9 @@ spec:
               startup:
                 enabled: true
                 spec:
-                  failureThreshold: 30
-                  periodSeconds: 5
+                  failureThreshold: 60
+                  periodSeconds: 10
+                  timeoutSeconds: 30
             securityContext:
               allowPrivilegeEscalation: false
               # readOnlyRootFilesystem: true # dumb s6 image
@@ -97,8 +86,8 @@ spec:
               - name: calibre-web-automated
                 port: 8083
             timeouts:
-              request: 60s
-              backendRequest: 60s
+              request: 300s
+              backendRequest: 300s
         annotations:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Media
