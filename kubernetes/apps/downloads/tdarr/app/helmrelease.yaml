@@ -63,7 +63,7 @@ spec:
           gethomepage.dev/name: Tdarr
           gethomepage.dev/group: Downloads
           gethomepage.dev/icon: tdarr.png
-          gethomepage.dev/pod-selector: app in (tdarr)
+          gethomepage.dev/app: tdarr
         rules:
           - backendRefs:
               - name: "tdarr-app"
