@@ -17,6 +17,8 @@ cgroup:
 devices: "^(ens|eth|bond|br|veth|lxc|vmbr|tap|vnet)[0-9a-f]*"
 # Enable auto-detection as fallback
 enableAutoDirectRouting: true
+# Fix for direct routing device issue - specify the primary network interface
+directRoutingDevice: "ens18"
 dashboards:
   enabled: true
 endpointRoutes:
