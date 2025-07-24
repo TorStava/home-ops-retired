@@ -12,13 +12,13 @@ cgroup:
   automount:
     enabled: false
   hostRoot: /sys/fs/cgroup
-# Use a pattern that matches common network interface names including Proxmox interfaces
-# If this fails, Cilium will auto-detect the device
-devices: "^(ens|eth|bond|br|veth|lxc|vmbr|tap|vnet)[0-9a-f]*"
+# Specify the exact network interface names for Proxmox VMs
+# This should match the actual network interface names on your Talos nodes
+devices: "ens18"
 # Enable auto-detection as fallback
 enableAutoDirectRouting: true
-# Fix for direct routing device issue - specify the primary network interface
-directRoutingDevice: "ens18"
+# Enable direct routing mode
+enableDirectRouting: true
 dashboards:
   enabled: true
 endpointRoutes:
