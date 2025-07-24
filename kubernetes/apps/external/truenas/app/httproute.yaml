@@ -28,3 +28,6 @@ spec:
         - path:
             type: PathPrefix
             value: /
+      timeouts:
+        request: 10s
+        backendRequest: 10s
