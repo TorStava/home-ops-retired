@@ -6,5 +6,4 @@ resources:
   - ./helmrelease.yaml
   - ./podmonitor.yaml
   - ./servicemonitor.yaml
-  - ./service.yaml
   - ./security-policy.yaml
