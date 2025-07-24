@@ -114,8 +114,8 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   components:
-    - ../../../../components/gatus/guarded
     - ../../../../components/gatus/internal
+    - ../../../../components/gatus/external
     # also cpu scales the api, which is fine, but theoretically only really need to scale the microservices
     # needs https://github.com/immich-app/immich-charts/issues/94
     - ../../../../components/keda/nfs-cpu-scaler
