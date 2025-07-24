@@ -71,6 +71,8 @@ spec:
           http:
             port: 8083
 
+    route: {}
+
     persistence:
       config:
         existingClaim: *app
