@@ -23,6 +23,9 @@ spec:
   values:
     controllers:
       *app :
+        pod:
+          nodeSelector:
+            nfs-colocated: "true"
         annotations:
           reloader.stakater.com/auto: 'true'
         initContainers:
