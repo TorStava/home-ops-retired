@@ -80,6 +80,7 @@ spec:
           - name: k3s-worker-1
           - name: k3s-worker-2
           - name: k3s-worker-3
+          - name: k3s-worker-4
         config:
           osdsPerDevice: "1"
     cephBlockPools:
