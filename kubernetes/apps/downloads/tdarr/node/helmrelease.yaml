@@ -47,7 +47,6 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
     controllers:
       tdarr-node:
-        type: daemonset
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
@@ -72,6 +71,9 @@ spec:
                 memory: 250Mi
               limits:
                 cpu: 2
+        pod:
+          nodeSelector:
+            nfs-colocated: "true"
     service:
       app:
         controller: *app
