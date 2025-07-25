@@ -55,6 +55,9 @@ spec:
               limits:
                 cpu: 1000m
                 memory: 2Gi
+        pod:
+          nodeSelector:
+            nfs-colocated: "true"
     # defaultPodOptions: # dumb s6 image
     #   automountServiceAccountToken: false
     #   enableServiceLinks: false
