@@ -9,3 +9,4 @@ resources:
   - ./helmrelease.yaml
   - ./volsync.yaml
   - ./loadbalancer.yaml
+  - ./ocirepository.yaml

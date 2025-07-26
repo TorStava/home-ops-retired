@@ -12,11 +12,6 @@ spec:
   nfs:
     path: ${NAS_PATH}/photos
     server: ${NAS_IP}
-    mountOptions:
-      - nfsvers=4.1
-      - nconnect=16
-      - hard
-      - noatime
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/refs/heads/master/master/persistentvolumeclaim-v1.json
 apiVersion: v1
