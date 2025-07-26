@@ -19,6 +19,7 @@ metadata:
   name: internal
   labels:
     type: internal
+    ping: pong
   annotations:
     external-dns.alpha.kubernetes.io/target: &hostname internal.${SECRET_DOMAIN}
 spec:
