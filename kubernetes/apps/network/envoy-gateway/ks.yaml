@@ -29,7 +29,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-      test: test
   dependsOn:
     - name: envoy-gateway
       namespace: network
@@ -53,16 +52,11 @@ spec:
     - &healthCheck
       apiVersion: &envoyVersion gateway.envoyproxy.io/v1alpha1
       kind: &clientKind ClientTrafficPolicy
-      name: external
+      name: client
       namespace: *namespace
     - <<: *healthCheck
-      name: internal
-    - <<: *healthCheck
       kind: &backendKind BackendTrafficPolicy
-      name: external
-    - <<: *healthCheck
-      kind: *backendKind
-      name: internal
+      name: backend
   healthCheckExprs:
     - apiVersion: *gatewayVersion
       kind: *gatewayKind
