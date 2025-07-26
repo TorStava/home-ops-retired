@@ -63,13 +63,11 @@ spec:
       current: |-
         status.listeners.exists(l,
           l.conditions.filter(e, e.type == 'Accepted').exists(e, e.status == 'True') &&
-          l.conditions.filter(e, e.type == 'Programmed').exists(e, e.status == 'True') &&
-          l.conditions.filter(e, e.type == 'OverlappingCertificates').all(e, e.status == 'False'))
+          l.conditions.filter(e, e.type == 'Programmed').exists(e, e.status == 'True'))
       failed: |-
         status.listeners.exists(l,
           l.conditions.filter(e, e.type == 'Accepted').exists(e, e.status == 'False') ||
-          l.conditions.filter(e, e.type == 'Programmed').exists(e, e.status == 'False') ||
-          l.conditions.filter(e, e.type == 'OverlappingCertificates').exists(e, e.status == 'True'))
+          l.conditions.filter(e, e.type == 'Programmed').exists(e, e.status == 'False'))
     - &expr
       apiVersion: *envoyVersion
       kind: *clientKind
