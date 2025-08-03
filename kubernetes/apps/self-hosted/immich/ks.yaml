@@ -69,6 +69,7 @@ spec:
       CNPG_LIMITS_MEMORY_HUGEPAGES: 512Mi
       CNPG_LIMITS_MEMORY: 4Gi
   components:
+    - ../../../../components/cnpg/backup
     - ../../../../components/cnpg/restore
   healthChecks:
     - apiVersion: &postgresVersion postgresql.cnpg.io/v1
