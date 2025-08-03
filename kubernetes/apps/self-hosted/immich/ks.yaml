@@ -70,7 +70,6 @@ spec:
       CNPG_LIMITS_MEMORY: 4Gi
   components:
     - ../../../../components/cnpg/backup
-    - ../../../../components/cnpg/restore
   healthChecks:
     - apiVersion: &postgresVersion postgresql.cnpg.io/v1
       kind: &postgresKind Cluster
