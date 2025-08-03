@@ -8,7 +8,7 @@ spec:
   interval: 30m
   url: https://github.com/cloudnative-pg/plugin-barman-cloud.git
   ref:
-    tag: v0.4.0
+    tag: v0.5.0
   ignore: |
     # exclude
     /*
@@ -141,9 +141,6 @@ spec:
       CNPG_SIZE: 5Gi
       CNPG_LIMITS_MEMORY_HUGEPAGES: 1Gi
       CNPG_LIMITS_MEMORY: 4Gi
-    substituteFrom:
-      - name: cluster-secrets
-        kind: Secret
   components:
     - ../../../../components/cnpg/backup
   healthChecks:
@@ -195,9 +192,6 @@ spec:
       APP: *app
       VOLSYNC_CAPACITY: 2Gi
       GATUS_SUBDOMAIN: pg
-    substituteFrom:
-      - name: cluster-secrets
-        kind: Secret
   components:
     - ../../../../components/volsync
     - ../../../../components/gatus/guarded
