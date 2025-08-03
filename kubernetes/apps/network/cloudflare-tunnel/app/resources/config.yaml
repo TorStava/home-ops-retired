@@ -1,17 +1,10 @@
 ---
 originRequest:
-  http2Origin: false
   originServerName: "external.${SECRET_DOMAIN}"
-  connectTimeout: 30s
-  readTimeout: 60s
-  writeTimeout: 60s
-  noTLSVerify: true
-  keepAliveConnections: 100
-  keepAliveTimeout: 90s
 
 ingress:
   - hostname: "${SECRET_DOMAIN}"
-    service: &svc https://envoy-network-external-b1d9befd.network.svc.cluster.local
+    service: &svc https://cilium-gateway-external.kube-system.svc.cluster.local
   - hostname: "*.${SECRET_DOMAIN}"
     service: *svc
   - service: http_status:404
