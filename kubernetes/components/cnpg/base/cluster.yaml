@@ -37,3 +37,9 @@ spec:
       shared_buffers: ${CNPG_SHARED_BUFFERS:=512MB}
   monitoring:
     enablePodMonitor: true
+  probes:
+    startup:
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      timeoutSeconds: 5
+      failureThreshold: 30
