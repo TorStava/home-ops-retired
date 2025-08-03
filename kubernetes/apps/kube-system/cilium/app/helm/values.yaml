@@ -1,39 +1,40 @@
 ---
 autoDirectNodeRoutes: true
+bandwidthManager:
+  enabled: true
+  bbr: true
 bpf:
   datapathMode: netkit
   masquerade: true
   preallocateMaps: true
-  tproxy: false # Disabled to fix Cloudflare Tunnel connectivity issues
-cni:
-  # Required for pairing with Multus CNI
-  exclusive: false
+  # tproxy: true
+bpfClockProbe: true
 cgroup:
   automount:
     enabled: false
   hostRoot: /sys/fs/cgroup
-# Specify the exact network interface names for Proxmox VMs
-# This should match the actual network interface names on your Talos nodes
-devices: "ens18"
-# Enable auto-detection as fallback
-enableAutoDirectRouting: true
-# Enable direct routing mode
-enableDirectRouting: true
+cni:
+  exclusive: false
 dashboards:
   enabled: true
+devices: ens+
+enableIPv4BIGTCP: true
 endpointRoutes:
   enabled: true
 envoy:
-  enabled: false
+  rollOutPods: true
+  prometheus:
+     serviceMonitor:
+       enabled: true
+gatewayAPI:
+  enabled: true
+  enableAlpn: true
+  xffNumTrustedHops: 1
 hubble:
-  enabled: false
+  enabled: true
 ipam:
   mode: kubernetes
-  # Disable IPv6 to prevent dual-stack issues
-  ipv6:
-    enabled: false
-enableIPv4BIGTCP: true
-ipv4NativeRoutingCIDR: "10.42.0.0/16"
+ipv4NativeRoutingCIDR: 10.42.0.0/16
 k8sServiceHost: 127.0.0.1
 k8sServicePort: 7445
 kubeProxyReplacement: true
@@ -42,11 +43,8 @@ l2announcements:
   enabled: true
 loadBalancer:
   algorithm: maglev
-  mode: "dsr"
+  mode: dsr
 localRedirectPolicy: true
-# Connection tracking configuration for better stability
-enableActiveConnectionTracking: true
-enableConnectionTracking: true
 operator:
   dashboards:
     enabled: true
@@ -83,5 +81,3 @@ securityContext:
       - NET_ADMIN
       - SYS_ADMIN
       - SYS_RESOURCE
-socketLB:
-  hostNamespaceOnly: true
