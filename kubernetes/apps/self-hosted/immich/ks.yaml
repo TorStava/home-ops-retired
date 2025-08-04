@@ -67,9 +67,9 @@ spec:
       CNPG_VERSION: 17.5-0.4.2@sha256:4a6f5ca2212018322823a92250230d471e2fa33c287ed8b400bd58a3cc3a4e6b
       CNPG_SIZE: 5Gi
       CNPG_LIMITS_MEMORY_HUGEPAGES: 512Mi
-      CNPG_LIMITS_MEMORY: 6Gi
+      CNPG_LIMITS_MEMORY: 4Gi
   components:
-    - ../../../../components/cnpg/restore
+    - ../../../../components/cnpg/backup
   healthChecks:
     - apiVersion: &postgresVersion postgresql.cnpg.io/v1
       kind: &postgresKind Cluster
@@ -92,6 +92,19 @@ spec:
           postgresql:
             shared_preload_libraries:
               - "vchord.so"
+          bootstrap:
+            initdb:
+              database: immich
+              owner: immich
+              secret:
+                name: immich-postgres-user
+              dataChecksums: true
+              postInitApplicationSQL:
+                - CREATE EXTENSION vchord CASCADE;
+                - CREATE EXTENSION earthdistance CASCADE;
+                # still need these?
+                - ALTER DATABASE immich SET search_path TO "$user", public, vectors;
+                - ALTER SCHEMA vectors OWNER TO immich;
 ---
 # yaml-language-server: $schema=https://schemas.tholinka.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
