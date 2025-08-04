@@ -102,9 +102,6 @@ spec:
               postInitApplicationSQL:
                 - CREATE EXTENSION vchord CASCADE;
                 - CREATE EXTENSION earthdistance CASCADE;
-                # still need these?
-                - ALTER DATABASE immich SET search_path TO "$user", public, vectors;
-                - ALTER SCHEMA vectors OWNER TO immich;
 ---
 # yaml-language-server: $schema=https://schemas.tholinka.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
