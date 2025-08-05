@@ -67,6 +67,12 @@ spec:
           - name: external
             namespace: kube-system
             sectionName: https
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/name: Kavita
+          gethomepage.dev/icon: kavita.png
+          gethomepage.dev/app: kavita
         rules:
           - backendRefs: [{}]
     persistence:
