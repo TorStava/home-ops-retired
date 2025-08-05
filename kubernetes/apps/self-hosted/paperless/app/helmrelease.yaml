@@ -92,9 +92,10 @@ spec:
                   periodSeconds: 5
             resources:
               requests:
-                cpu: 100m
-                memory: 768Mi
+                cpu: 3000m
+                memory: 2Gi
               limits:
+                cpu: 3000m
                 memory: 4Gi
           gotenberg:
             image:
@@ -108,9 +109,10 @@ spec:
               - '--chromium-allow-list=file:///tmp/.*'
             resources:
               limits:
-                memory: 1Gi
+                cpu: 1000m
+                memory: 512Gi
               requests:
-                cpu: 10m
+                cpu: 100m
                 memory: 256Mi
           tika:
             image:
@@ -120,9 +122,10 @@ spec:
               - containerPort: 9998
             resources:
               limits:
+                cpu: 1000m
                 memory: 512Mi
               requests:
-                cpu: 10m
+                cpu: 100m
                 memory: 256Mi
     service:
       app:
