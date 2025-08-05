@@ -60,6 +60,13 @@ spec:
       config:
         enabled: true
         existingClaim: *app
+      application.yml:
+        type: secret
+        name: komga
+        defaultMode: 0400
+        globalMounts:
+          - subPath: application.yml
+            path: /config/application.yml
       magazines:
         type: nfs
         server: ${NAS_IP}
