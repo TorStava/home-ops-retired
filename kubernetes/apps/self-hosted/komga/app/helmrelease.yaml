@@ -28,6 +28,8 @@ spec:
             env:
               TZ: "${TIMEZONE}"
               SERVER_PORT: &port 8080
+              KOMGA_OAUTH2ACCOUNTCREATION: "true"
+              KOMGA_OIDCEMAILVERIFICATION: "true"
             resources:
               requests:
                 memory: 256M
