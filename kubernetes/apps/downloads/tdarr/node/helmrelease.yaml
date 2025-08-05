@@ -42,10 +42,6 @@ spec:
       #           operator: In
       #           values:
       #           - "true"
-      securityContext:
-        runAsUser: 568
-        fsGroup: 1234
-        fsGroupChangePolicy: OnRootMismatch
     controllers:
       tdarr-node:
         annotations:
@@ -72,6 +68,13 @@ spec:
                 memory: 250Mi
               limits:
                 cpu: 2
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+              fsGroup: 1234
+              capabilities:
+                add:
+                  - CHOWN
         pod:
           nodeSelector:
             nfs-colocated: "true"

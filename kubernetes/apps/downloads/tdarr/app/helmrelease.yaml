@@ -18,10 +18,6 @@ spec:
       strategy: rollback
       retries: 3
   values:
-    defaultPodOptions:
-      securityContext:
-        fsGroup: 1234
-        fsGroupChangePolicy: OnRootMismatch
     controllers:
       tdarr:
         containers:
@@ -40,6 +36,13 @@ spec:
                 memory: 256Mi
               limits:
                 memory: 1Gi
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+              fsGroup: 1234
+              capabilities:
+                add:
+                  - CHOWN
         pod:
           nodeSelector:
             nfs-colocated: "true"
