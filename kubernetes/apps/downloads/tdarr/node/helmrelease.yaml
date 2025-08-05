@@ -43,7 +43,8 @@ spec:
       #           values:
       #           - "true"
       securityContext:
-        fsGroup: 568
+        runAsUser: 568
+        fsGroup: 1234
         fsGroupChangePolicy: OnRootMismatch
     controllers:
       tdarr-node:
@@ -56,6 +57,8 @@ spec:
               tag: 2.45.01@sha256:7e98e8b97350101bda7af1673e473edd65915f10a0c5ae040487dec220a870c8
             env:
               TZ: ${TIMEZONE}
+              PUID: "568"
+              PGID: "1234"
               serverIP: tdarr-server.downloads.svc.cluster.local.
               serverPort: 8266
               ffmpegPath: /usr/local/bin/ffmpeg
