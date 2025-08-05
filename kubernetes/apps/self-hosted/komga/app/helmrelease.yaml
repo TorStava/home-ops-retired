@@ -60,7 +60,7 @@ spec:
       config:
         enabled: true
         existingClaim: *app
-      application.yml:
+      application_yml:
         type: secret
         name: komga
         defaultMode: 0400
