@@ -55,7 +55,7 @@ spec:
               komga
             )
         hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_EXTERNAL_DOMAIN}"
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
               - path: /
                 service:
