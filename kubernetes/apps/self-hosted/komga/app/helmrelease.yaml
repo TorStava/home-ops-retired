@@ -40,30 +40,20 @@ spec:
         ports:
           http:
             port: *port
-    ingress:
+
+    route:
       app:
-        enabled: true
-        className: internal
+        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/name: Komga
-          gethomepage.dev/description: Media server for comics/mangas/BDs/magazines/eBooks with API and OPDS support
           gethomepage.dev/group: Media
+          gethomepage.dev/name: Komga
           gethomepage.dev/icon: komga.png
-          gethomepage.dev/pod-selector: >-
-            app in (
-              komga
-            )
-        hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        tls:
-          - hosts:
-              - *host
+          gethomepage.dev/app: komga
     persistence:
       config:
         enabled: true
