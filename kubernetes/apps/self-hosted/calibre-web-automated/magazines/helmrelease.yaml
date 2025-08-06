@@ -104,7 +104,7 @@ spec:
         server: ${NAS_IP}
         path: ${NAS_PATH}/data/magazines
         globalMounts: # needs to be set to nobody:nobody perms on setup of a fresh volume, because of the weird stuff s6 does, then set it to 1000:1000
-          - path: /magazines
+          - path: /calibre-library
             subPath: magazines
-          - path: /cwa-magazines-ingest
+          - path: /cwa-book-ingest
             subPath: to_import
