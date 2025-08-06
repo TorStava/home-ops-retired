@@ -7,6 +7,6 @@ resources:
   - ./pvc.yaml
   - ./httproute.yaml
   - ./helmrelease.yaml
-  - ./volsync.yaml
+  # - ./volsync.yaml
   - ./loadbalancer.yaml
   - ./ocirepository.yaml
