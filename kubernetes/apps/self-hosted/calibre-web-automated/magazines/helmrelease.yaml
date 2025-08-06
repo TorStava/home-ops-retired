@@ -86,9 +86,9 @@ spec:
           - backendRefs: [{}]
         annotations:
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: Home
+          gethomepage.dev/group: Media
           gethomepage.dev/name: Magazines
-          gethomepage.dev/icon: magazines.png
+          gethomepage.dev/icon: calibre.png
           gethomepage.dev/widget.type: calibreweb
           gethomepage.dev/widget.url: http://calibre-web-automated-magazines.self-hosted.svc.cluster.local:8083
           gethomepage.dev/widget.username: "{{`{{HOMEPAGE_VAR_CALIBRE_USER}}`}}"
