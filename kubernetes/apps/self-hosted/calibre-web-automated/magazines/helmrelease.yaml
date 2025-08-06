@@ -98,9 +98,7 @@ spec:
       config:
         existingClaim: *app
       cache:
-        storageClass: ceph-block
-        accessMode: ReadWriteOnce
-        size: 10Gi
+        existingClaim: calibre-web-automated-magazines-cache
       media:
         type: nfs
         server: ${NAS_IP}
