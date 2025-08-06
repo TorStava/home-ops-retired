@@ -32,9 +32,10 @@ spec:
               ffmpegPath: "/usr/local/bin/ffmpeg"
             resources:
               requests:
-                cpu: 50m
-                memory: 256Mi
+                cpu: 200m
+                memory: 512Mi
               limits:
+                cpu: 1000m
                 memory: 1Gi
             securityContext:
               runAsUser: 0
@@ -43,9 +44,6 @@ spec:
               capabilities:
                 add:
                   - CHOWN
-        pod:
-          nodeSelector:
-            nfs-colocated: "true"
     service:
       app:
         controller: *app
