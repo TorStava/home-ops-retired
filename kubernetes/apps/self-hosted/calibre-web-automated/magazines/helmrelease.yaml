@@ -91,8 +91,8 @@ spec:
           gethomepage.dev/icon: magazines.png
           gethomepage.dev/widget.type: calibreweb
           gethomepage.dev/widget.url: http://calibre-web-automated-magazines.self-hosted.svc.cluster.local:8083
-          gethomepage.dev/widget.username: "{{HOMEPAGE_VAR_CALIBRE_USER}}"
-          gethomepage.dev/widget.password: "{{HOMEPAGE_VAR_CALIBRE_PASS}}"
+          gethomepage.dev/widget.username: "{{`{{HOMEPAGE_VAR_CALIBRE_USER}}`}}"
+          gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_CALIBRE_PASS}}`}}"
 
     persistence:
       config:
