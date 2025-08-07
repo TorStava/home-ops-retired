@@ -93,7 +93,7 @@ spec:
                 memory: 4Gi
               limits:
                 cpu: 3000m
-                memory: 8Gi
+                memory: 16Gi
           gotenberg:
             image:
               repository: gotenberg/gotenberg
