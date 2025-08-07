@@ -70,4 +70,4 @@ spec:
       magazines:
         type: nfs
         server: ${NAS_IP}
-        path: ${NAS_PATH}/data/ebooks/magazines
+        path: ${NAS_PATH}/data/magazines
