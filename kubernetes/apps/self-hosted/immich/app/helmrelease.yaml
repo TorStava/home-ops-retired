@@ -84,11 +84,8 @@ spec:
             enabled: true
             keepLastAmount: 14
         ffmpeg:
-          accel: qsv
-          accelDecode: true
           preset: slow
           targetResolution: original
-          transcode: required
         image:
           colorspace: p3
           extractEmbedded: false
