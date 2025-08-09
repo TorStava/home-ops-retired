@@ -32,10 +32,10 @@ spec:
               KOMGA_OIDCEMAILVERIFICATION: "true"
             resources:
               requests:
-                memory: 256M
-                cpu: 15m
+                memory: 512M
+                cpu: 25m
               limits:
-                memory: 4Gi
+                memory: 8Gi
     service:
       app:
         controller: *app
