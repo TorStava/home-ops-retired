@@ -47,7 +47,7 @@ spec:
               fsGroup: 0
     service:
       app:
-        controller: *app
+        controller: elasticsearch
         ports:
           http:
             port: &port 9200

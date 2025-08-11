@@ -51,7 +51,7 @@ spec:
                   - CHOWN
     service:
       app:
-        controller: *app
+        controller: tubearchivist
         ports:
           http:
             port: &port 8000
