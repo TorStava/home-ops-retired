@@ -15,6 +15,7 @@ spec:
     - name: volsync
       namespace: volsync-system
   components:
+    - ../../../../components/common
     - ../../../../components/gatus/guarded
     - ../../../../components/volsync
   path: ./kubernetes/apps/downloads/tubearchivist/elasticsearch
@@ -55,6 +56,7 @@ spec:
     - name: tubearchivist-elasticsearch
       namespace: *namespace
   components:
+    - ../../../../components/common
     - ../../../../components/gatus/guarded
     - ../../../../components/gatus/internal
     - ../../../../components/volsync
