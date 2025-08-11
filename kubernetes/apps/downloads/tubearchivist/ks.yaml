@@ -21,7 +21,9 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *namespace
   wait: false  # no flux ks dependencies
   interval: 30m
   retryInterval: 1m
@@ -52,11 +54,13 @@ spec:
       namespace: database
     - name: tubearchivist-elasticsearch
       namespace: *namespace
-  path: ./kubernetes/apps/downloads/tubearchivist/web
+  path: ./kubernetes/apps/downloads/tubearchivist/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *namespace
   wait: false  # no flux ks dependencies
   interval: 30m
   retryInterval: 1m
