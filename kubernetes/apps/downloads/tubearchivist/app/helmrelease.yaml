@@ -83,4 +83,4 @@ spec:
       youtube:
         type: nfs
         server: ${NAS_IP}
-        path: ${NAS_PATH}/youtube
+        path: ${NAS_PATH}/data/youtube
