@@ -16,3 +16,4 @@ resources:
   - ./maintainerr/ks.yaml
   - ./tautulli/ks.yaml
   - ./tdarr/ks.yaml
+  - ./tubearchivist/ks.yaml
