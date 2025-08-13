@@ -1,3 +1,42 @@
+# yaml-language-server: $schema=https://schemas.tholinka.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app dragonfly-tubearchivist
+  namespace: &namespace downloads
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  interval: 1h
+  retryInterval: 2m
+  path: ./kubernetes/apps/downloads/tubearchivist/cluster
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *namespace
+  timeout: 5m
+  dependsOn:
+    - name: dragonfly
+      namespace: database
+  postBuild:
+    substitute:
+      APP: tubearchivist
+      DRAGONFLY_REQUESTS_MEMORY: 256Mi
+  components:
+    - ../../../../components/dragonfly
+  healthChecks:
+    - apiVersion: &dragonflyVersion dragonflydb.io/v1alpha1
+      kind: &dragonflyKind Dragonfly
+      name: *app
+      namespace: *namespace
+  healthCheckExprs:
+    - apiVersion: *dragonflyVersion
+      kind: *dragonflyKind
+      failed: status.phase != 'ready'
+      current: status.phase == 'ready'
 ---
 # yaml-language-server: $schema=https://github.com/fluxcd-community/flux2-schemas/raw/main/kustomization-kustomize-v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
