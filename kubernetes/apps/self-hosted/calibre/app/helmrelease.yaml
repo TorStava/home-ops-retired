@@ -67,7 +67,7 @@ spec:
 
     route:
       app:
-        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
+        hostnames: ["calibe-gui.${SECRET_DOMAIN}"]
         parentRefs:
           - name: internal
             namespace: kube-system
@@ -75,7 +75,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
-          gethomepage.dev/name: Calibre
+          gethomepage.dev/name: Calibre GUI
           gethomepage.dev/icon: calibre.png
           gethomepage.dev/app: calibre
 
@@ -86,6 +86,6 @@ spec:
         type: nfs
         server: ${NAS_IP}
         path: ${NAS_PATH}/data/ebooks/CalibreDB
-        globalMounts: # needs to be set to nobody:nobody perms on setup of a fresh volume, because of the weird stuff s6 does, then set it to 1000:1000
+        globalMounts:
           - path: /calibre-library
             subPath: Ebooks
