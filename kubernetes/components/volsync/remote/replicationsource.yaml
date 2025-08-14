@@ -12,6 +12,9 @@ spec:
     repository: '${APP}-volsync-s3-secret'
     copyMethod: Snapshot
     volumeSnapshotClassName: '${VOLSYNC_SNAPSHOTCLASS:=csi-ceph-blockpool}'
+    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=5Gi}"
+    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:=openebs-hostpath}"
+    cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:=ReadWriteOnce}"]
     storageClassName: '${VOLSYNC_STORAGECLASS:=ceph-block}'
     accessModes: ['${VOLSYNC_SNAP_ACCESSMODES:=ReadWriteOnce}']
     moverSecurityContext:
