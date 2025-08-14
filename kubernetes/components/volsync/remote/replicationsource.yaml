@@ -1,0 +1,23 @@
+---
+# yaml-language-server: $schema=https://schemas.tholinka.dev/volsync.backube/replicationsource_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: '${APP}-r2'
+spec:
+  sourcePVC: '${APP}'
+  trigger:
+    schedule: '30 0 * * *'
+  kopia:
+    accessModes: ['${VOLSYNC_SNAP_ACCESSMODES:=ReadWriteOnce}']
+    copyMethod: Snapshot
+    moverSecurityContext:
+      runAsUser: ${VOLSYNC_PUID:=568}
+      runAsGroup: ${VOLSYNC_PGID:=568}
+      fsGroup: ${VOLSYNC_PGID:=568}
+      fsGroupChangePolicy: ${VOLSYNC_GROUP_CHANGE_POLICY:=Always}
+    repository: '${APP}-volsync-s3-secret'
+    retain:
+      daily: 7
+    storageClassName: '${VOLSYNC_STORAGECLASS:=ceph-block}'
+    volumeSnapshotClassName: '${VOLSYNC_SNAPSHOTCLASS:=csi-ceph-blockpool}'
