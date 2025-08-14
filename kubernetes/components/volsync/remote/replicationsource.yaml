@@ -8,16 +8,16 @@ spec:
   sourcePVC: '${APP}'
   trigger:
     schedule: '30 0 * * *'
-  kopia:
-    accessModes: ['${VOLSYNC_SNAP_ACCESSMODES:=ReadWriteOnce}']
+  restic:
+    repository: '${APP}-volsync-s3-secret'
     copyMethod: Snapshot
+    volumeSnapshotClassName: '${VOLSYNC_SNAPSHOTCLASS:=csi-ceph-blockpool}'
+    storageClassName: '${VOLSYNC_STORAGECLASS:=ceph-block}'
+    accessModes: ['${VOLSYNC_SNAP_ACCESSMODES:=ReadWriteOnce}']
     moverSecurityContext:
       runAsUser: ${VOLSYNC_PUID:=568}
       runAsGroup: ${VOLSYNC_PGID:=568}
       fsGroup: ${VOLSYNC_PGID:=568}
       fsGroupChangePolicy: ${VOLSYNC_GROUP_CHANGE_POLICY:=Always}
-    repository: '${APP}-volsync-s3-secret'
     retain:
       daily: 7
-    storageClassName: '${VOLSYNC_STORAGECLASS:=ceph-block}'
-    volumeSnapshotClassName: '${VOLSYNC_SNAPSHOTCLASS:=csi-ceph-blockpool}'
