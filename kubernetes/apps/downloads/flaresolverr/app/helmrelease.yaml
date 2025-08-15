@@ -38,8 +38,6 @@ spec:
               requests:
                 cpu: 15m
                 memory: 256M
-              limits:
-                memory: 800M
     service:
       flaresolverr:
         ports:

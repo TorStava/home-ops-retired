@@ -44,8 +44,6 @@ spec:
               requests:
                 cpu: 15m
                 memory: 200M
-              limits:
-                memory: 1G
     service:
       app:
         ports:

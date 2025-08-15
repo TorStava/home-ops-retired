@@ -72,8 +72,6 @@ spec:
       resources:
         requests:
           cpu: 300m
-        limits:
-          memory: 1Gi
       metrics:
         enabled: true
         serviceMonitor:
@@ -83,8 +81,6 @@ spec:
       resources:
         requests:
           cpu: 300m
-        limits:
-          memory: 1Gi
     prometheus:
       rules:
         enabled: true
@@ -95,8 +91,6 @@ spec:
         requests:
           cpu: 100m
           memory: 128Mi
-        limits:
-          memory: 256Mi
   valuesFrom:
     - targetPath: authentik.postgresql.user
       kind: Secret
