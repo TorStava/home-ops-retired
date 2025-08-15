@@ -128,11 +128,8 @@ spec:
     server:
       resources:
         requests:
-          cpu: 500m
+          cpu: 1000m
           memory: 1Gi
-        limits:
-          cpu: 3000m
-          memory: 4Gi
       probes:
         # nas is a bit slow sometimes when doing a large import, which causes the app to hang
         liveness: &probes
@@ -148,11 +145,8 @@ spec:
     machine-learning:
       resources:
         requests:
-          cpu: 4000m
+          cpu: 2000m
           memory: 4Gi
-        limits:
-          cpu: 4000m
-          memory: 8Gi
       persistence:
         cache:
           type: pvc
