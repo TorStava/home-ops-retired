@@ -39,11 +39,8 @@ spec:
                   name: *app
             resources:
               requests:
-                cpu: 200m
-                memory: 512Mi
-              limits:
                 cpu: 1000m
-                memory: 2Gi
+                memory: 512Mi
             securityContext:
               fsGroup: 1234
               capabilities:
