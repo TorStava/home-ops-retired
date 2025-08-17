@@ -25,6 +25,6 @@ metadata:
     app.kubernetes.io/instance: *app
 subsets:
   - addresses:
-      - ip: ${NAS_IP}
+      - ip: ${NEXTCLOUD_IP}
     ports:
       - port: 80
