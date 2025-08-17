@@ -8,3 +8,4 @@ components:
 resources:
   - truenas/ks.yaml
   - plex/ks.yaml
+  - nextcloud/ks.yaml
