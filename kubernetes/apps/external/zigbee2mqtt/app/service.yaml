@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: &app zigbee2mqtt
+  namespace: external
+  labels:
+    app.kubernetes.io/name: *app
+    app.kubernetes.io/instance: *app
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: &app zigbee2mqtt
+  namespace: external
+  labels:
+    app.kubernetes.io/name: *app
+    app.kubernetes.io/instance: *app
+subsets:
+  - addresses:
+      - ip: ${ZIGBEE2MQTT_IP}
+    ports:
+      - port: 8080

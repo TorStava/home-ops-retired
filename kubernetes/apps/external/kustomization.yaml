@@ -9,3 +9,5 @@ resources:
   - truenas/ks.yaml
   - plex/ks.yaml
   - nextcloud/ks.yaml
+  - zigbee2mqtt/ks.yaml
+  - homeassistant/ks.yaml
