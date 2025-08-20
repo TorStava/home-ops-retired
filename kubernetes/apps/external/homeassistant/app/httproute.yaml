@@ -12,7 +12,6 @@ metadata:
     gethomepage.dev/icon: homeassistant.svg
     gethomepage.dev/widget.type: homeassistant
     gethomepage.dev/widget.url: https://homeassistant.${SECRET_DOMAIN}
-    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_HOMEASSISTANT_TOKEN}}'
 spec:
   hostnames:
     - 'homeassistant.${SECRET_DOMAIN}'
