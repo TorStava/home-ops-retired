@@ -9,9 +9,10 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/group: Home
     gethomepage.dev/name: Home Assistant
-    gethomepage.dev/icon: homeassistant.svg
+    gethomepage.dev/icon: home-assistant.svg
     gethomepage.dev/widget.type: homeassistant
     gethomepage.dev/widget.url: https://homeassistant.${SECRET_DOMAIN}
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_HA_TOKEN}}'
 spec:
   hostnames:
     - 'homeassistant.${SECRET_DOMAIN}'
