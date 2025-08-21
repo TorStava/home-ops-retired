@@ -49,6 +49,7 @@ spec:
               TZ: "${TIMEZONE}"
               MAP_DEFAULT_ZOOM: 6
               APP_URL: https://firefly.${SECRET_DOMAIN}
+              TRUSTED_PROXIES: **
               # DB Settings
               DB_CONNECTION: pgsql
               DB_HOST: postgres-cluster-rw.database.svc.cluster.local
