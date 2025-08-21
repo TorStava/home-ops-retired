@@ -1,6 +1,5 @@
 ---
 # yaml-language-server: $schema=https://schemas.tholinka.dev/barmancloud.cnpg.io/objectstore_v1.json
-# technically we only need one of these per namespace...
 apiVersion: barmancloud.cnpg.io/v1
 kind: ObjectStore
 metadata:
@@ -22,3 +21,26 @@ spec:
       secretAccessKey:
         name: *secret
         key: AWS_SECRET_ACCESS_KEY
+---
+# yaml-language-server: $schema=https://schemas.tholinka.dev/barmancloud.cnpg.io/objectstore_v1.json
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: postgres-r2-${APP}
+spec:
+  retentionPolicy: 30d
+  configuration:
+    wal:
+      compression: bzip2
+      maxParallel: 8
+    data:
+      compression: bzip2
+    destinationPath: s3://${S3_POSTGRES_BUCKET}/
+    endpointURL: ${CLOUDFLARE_S3_ENDPOINT}
+    s3Credentials:
+      accessKeyId:
+        name: &secret ${APP}-cnpg-secret
+        key: CLOUDFLARE_R2_ACCESS_KEY_ID
+      secretAccessKey:
+        name: *secret
+        key: CLOUDFLARE_R2_SECRET_ACCESS_KEY
