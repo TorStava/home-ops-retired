@@ -14,3 +14,4 @@ resources:
   - ./komga/ks.yaml
   - ./calibre/ks.yaml
   - ./firefly-iii/ks.yaml
+  - ./outline/ks.yaml
