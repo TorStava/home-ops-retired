@@ -45,9 +45,6 @@ spec:
               PORT: &port 3000
               REDIS_URL: redis://dragonfly-cluster.database.svc.cluster.local:6379
               ENABLE_UPDATES: "false"
-              LOG_LEVEL: debug
-              FORCE_HTTPS: "true"
-              NODE_TLS_REJECT_UNAUTHORIZED: "0"
               OIDC_AUTH_URI: "https://auth.${SECRET_DOMAIN}/application/o/authorize"
               OIDC_DISPLAY_NAME: Authentik
               OIDC_SCOPES: openid profile email offline_access
@@ -75,9 +72,24 @@ spec:
 
     service:
       app:
+        controller: *app
         ports:
           http:
             port: *port
+
+    route:
+      app:
+        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
+        annotations:
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: Home
+          gethomepage.dev/name: Outline
+          gethomepage.dev/icon: outline.png
+          gethomepage.dev/app: *app
 
     persistence:
       data:
@@ -86,21 +98,3 @@ spec:
           *app :
             app:
               - path: /var/lib/outline/data
-
-    route:
-      app:
-        hostnames:
-          - '{{ .Release.Name }}.${SECRET_DOMAIN}'
-        parentRefs:
-          - name: internal
-            namespace: kube-system
-            sectionName: https
-        rules:
-          - backendRefs:
-              - name: *app
-                port: *port
-        annotations:
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: Home
-          gethomepage.dev/name: Outline
-          gethomepage.dev/icon: outline.png
