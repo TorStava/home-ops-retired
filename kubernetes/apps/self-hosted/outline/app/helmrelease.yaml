@@ -45,7 +45,7 @@ spec:
               PORT: &port 3000
               REDIS_URL: redis://dragonfly-cluster.database.svc.cluster.local:6379
               ENABLE_UPDATES: "false"
-              OIDC_AUTH_URI: "https://auth.${SECRET_DOMAIN}/application/o/authorize"
+              OIDC_AUTH_URI: "https://auth.${SECRET_DOMAIN}/application/o/authorize/"
               OIDC_DISPLAY_NAME: Authentik
               OIDC_SCOPES: openid profile email
               OIDC_TOKEN_URI: "https://auth.${SECRET_DOMAIN}/application/o/token/"
