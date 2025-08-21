@@ -51,7 +51,7 @@ spec:
               OIDC_TOKEN_URI: "https://auth.${SECRET_DOMAIN}/application/o/token/"
               OIDC_USERINFO_URI: "https://auth.${SECRET_DOMAIN}/application/o/userinfo/"
               OIDC_LOGOUT_URI: "https://auth.${SECRET_DOMAIN}/application/o/outline/end-session/"
-              OIDC_USERNAME_CLAIM: preferred_username
+              OIDC_USERNAME_CLAIM: email
             envFrom:
               - secretRef:
                   name: *app
