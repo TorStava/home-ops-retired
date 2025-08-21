@@ -46,6 +46,7 @@ spec:
               REDIS_URL: redis://dragonfly-cluster.database.svc.cluster.local:6379
               ENABLE_UPDATES: "false"
               LOG_LEVEL: debug
+              FORCE_HTTPS: "true"
               NODE_TLS_REJECT_UNAUTHORIZED: "0"
               OIDC_AUTH_URI: "https://auth.${SECRET_DOMAIN}/application/o/authorize"
               OIDC_DISPLAY_NAME: Authentik
