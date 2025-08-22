@@ -8,11 +8,3 @@ resources:
   - ./scheduledbackup.yaml
 patches:
   - path: patch.yaml
-vars:
-  - name: CLOUDFLARE_S3_ENDPOINT
-    objref:
-      kind: Secret
-      name: ${APP}-cnpg-secret
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.CLOUDFLARE_S3_ENDPOINT
