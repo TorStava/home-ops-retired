@@ -42,8 +42,17 @@ spec:
               tag: 1.108.1@sha256:8509288ac9c0591ddb8a4e4a8e432e003f3cc91bf492cfed6e2c8125c3de3a94
             env:
               GENERIC_TIMEZONE: ${TIMEZONE}
-              N8N_PORT: &port 5678
-              N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: true
+              EXECUTIONS_DATA_PRUNE: true
+              EXECUTIONS_DATA_MAX_AGE: 7
+              EXECUTIONS_DATA_PRUNE_MAX_COUNT: 50000
+              WEBHOOK_URL: https://{{ .Release.Name }}.${SECRET_DOMAIN}/
+              N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: false
+              N8N_RUNNERS_ENABLED: true
+              N8N_PROTOCOL: "https"
+              N8N_PORT: &port 8080
+              N8N_HOST: &hostName n8n.${SECRET_DOMAIN}
+              N8N_LOG_LEVEL: info
+              N8N_LOG_OUTPUT: console
               DB_TYPE: postgresdb
               DB_POSTGRESDB_DATABASE: *app
               DB_POSTGRESDB_HOST: postgres-cluster-rw.database.svc.cluster.local
@@ -70,6 +79,12 @@ spec:
               requests:
                 cpu: 500m
                 memory: 256Mi
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            fsGroupChangePolicy: "OnRootMismatch"
 
     service:
       app:
@@ -88,7 +103,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Home
-          gethomepage.dev/name: N8N
+          gethomepage.dev/name: n8n
           gethomepage.dev/icon: n8n.png
           gethomepage.dev/app: *app
 
