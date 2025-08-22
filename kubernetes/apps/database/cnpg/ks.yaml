@@ -140,7 +140,7 @@ spec:
       CNPG_REPLICAS: '2'
       CNPG_SIZE: 5Gi
       CNPG_LIMITS_MEMORY_HUGEPAGES: 1Gi
-      CNPG_LIMITS_MEMORY: 6Gi
+      CNPG_LIMITS_MEMORY: 8Gi
   components:
     - ../../../../components/cnpg/restore
   healthChecks:
@@ -193,6 +193,7 @@ spec:
       VOLSYNC_CAPACITY: 2Gi
       GATUS_SUBDOMAIN: pg
   components:
+    - ../../../../components/common
     - ../../../../components/volsync
     - ../../../../components/gatus/guarded
     - ../../../../components/gatus/internal
