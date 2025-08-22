@@ -42,6 +42,7 @@ spec:
               tag: 1.108.1@sha256:8509288ac9c0591ddb8a4e4a8e432e003f3cc91bf492cfed6e2c8125c3de3a94
             env:
               GENERIC_TIMEZONE: ${TIMEZONE}
+              N8N_PORT: &port 5678
               DB_TYPE: postgres
               DB_POSTGRESDB_DATABASE: *app
               DB_POSTGRESDB_HOST: postgres-cluster-rw.database.svc.cluster.local
