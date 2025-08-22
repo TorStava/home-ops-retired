@@ -43,6 +43,7 @@ spec:
             env:
               GENERIC_TIMEZONE: ${TIMEZONE}
               N8N_PORT: &port 5678
+              N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: true
               DB_TYPE: postgresdb
               DB_POSTGRESDB_DATABASE: *app
               DB_POSTGRESDB_HOST: postgres-cluster-rw.database.svc.cluster.local
