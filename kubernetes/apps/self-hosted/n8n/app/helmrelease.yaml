@@ -45,7 +45,7 @@ spec:
             args:
               - -c
               - sleep 5; exec n8n
-            env:
+            env: &env
               GENERIC_TIMEZONE: ${TIMEZONE}
               EXECUTIONS_DATA_PRUNE: true
               EXECUTIONS_DATA_MAX_AGE: 7
@@ -69,7 +69,7 @@ spec:
               QUEUE_BULL_REDIS_HOST: dragonfly-cluster.database.svc.cluster.local
               QUEUE_BULL_REDIS_PORT: 6379
               QUEUE_HEALTH_CHECK_ACTIVE: true
-            envFrom:
+            envFrom: &envFrom
               - secretRef:
                   name: *app
             probes:
@@ -92,6 +92,24 @@ spec:
             runAsGroup: 1000
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
+
+      workers:
+        replicas: 3
+        containers:
+          worker:
+            image:
+              repository: n8nio/n8n
+              tag: 1.108.1@sha256:8509288ac9c0591ddb8a4e4a8e432e003f3cc91bf492cfed6e2c8125c3de3a94
+            command:
+              - /bin/sh
+              - -c
+              - sleep 5; exec n8n worker
+            env: *env
+            envFrom: *envFrom
+            resources:
+              requests:
+                cpu: 500m
+                memory: 256Mi
 
     service:
       app:
