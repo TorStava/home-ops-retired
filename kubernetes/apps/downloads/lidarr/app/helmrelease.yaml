@@ -34,31 +34,18 @@ spec:
               LIDARR__LOG__DBENABLED: "False"
               LIDARR__LOG__LEVEL: info
               LIDARR__SERVER__PORT: &port 80
-              LIDARR__UPDATE__BRANCH: develop
               TZ: ${TIMEZONE}
             envFrom:
               - secretRef:
                   name: *app
-            probes:
-              liveness: &probes
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /ping
-                    port: *port
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *probes
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
             resources:
               requests:
-                cpu: 100m
+                cpu: 500m
+                memory: 1Gi
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
