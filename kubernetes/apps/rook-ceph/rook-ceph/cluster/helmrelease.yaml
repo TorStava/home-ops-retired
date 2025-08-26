@@ -83,6 +83,10 @@ spec:
           - name: k3s-worker-4
         config:
           osdsPerDevice: "1"
+        resources:
+          osd:
+            limits:
+              memory: 8Gi
     cephBlockPools:
       - name: ceph-blockpool
         spec:
