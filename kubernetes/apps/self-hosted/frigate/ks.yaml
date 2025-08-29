@@ -11,7 +11,13 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   components:
-    - ../../../../components/gatus/internal
+    - ../../../../components/gatus/guarded
+    - ../../../../components/volsync
+  dependsOn:
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+    - name: external-secrets-store
+      namespace: external-secrets
   interval: 1h
   retryInterval: 2m
   timeout: 5m
@@ -19,6 +25,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      VOLSYNC_CAPACITY: 5Gi
   prune: true
   sourceRef:
     kind: GitRepository
