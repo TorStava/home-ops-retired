@@ -13,3 +13,8 @@ spec:
       parameters:
         barmanObjectName: *name
         serverName: *name
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: &name postgres-r2-${APP}
+        serverName: *name
