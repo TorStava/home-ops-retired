@@ -16,3 +16,4 @@ resources:
   - ./firefly-iii/ks.yaml
   - ./outline/ks.yaml
   - ./n8n/ks.yaml
+  - ./frigate/ks.yaml
