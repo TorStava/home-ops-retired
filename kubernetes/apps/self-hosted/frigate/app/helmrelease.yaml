@@ -30,6 +30,9 @@ spec:
               FRIGATE_MQTT_USER: ${FRIGATE_MQTT_USER}
               FRIGATE_MQTT_PASSWORD: ${FRIGATE_MQTT_PASSWORD}
               MQTT_HOST: ${HOMEASSISTANT_IP}
+            envFrom:
+              - secretRef:
+                  name: *app
             resources:
               requests:
                 cpu: 1000m
