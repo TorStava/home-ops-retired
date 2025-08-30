@@ -6,7 +6,7 @@ mqtt:
   client_id: frigate
   host: "{MQTT_HOST}"
   topic_prefix: frigate
-  user: "{FRIGATE_MQTT_USER}"
+  user: "{FRIGATE_MQTT_USERNAME}"
   password: "{FRIGATE_MQTT_PASSWORD}"
 
 database:

@@ -25,11 +25,6 @@ spec:
               tag: 0.16.0
             env:
               TZ: ${TIMEZONE}
-              FRIGATE_RTSP_USER: ${SECRET_IMOU_USERNAME}
-              FRIGATE_RTSP_PASSWORD: ${SECRET_IMOU_CAM1_PASSWORD}
-              FRIGATE_MQTT_USER: ${FRIGATE_MQTT_USER}
-              FRIGATE_MQTT_PASSWORD: ${FRIGATE_MQTT_PASSWORD}
-              MQTT_HOST: ${HOMEASSISTANT_IP}
             envFrom:
               - secretRef:
                   name: *app
