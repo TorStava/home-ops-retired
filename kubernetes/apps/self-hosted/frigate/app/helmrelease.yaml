@@ -77,7 +77,7 @@ spec:
           gethomepage.dev/group: Home
           gethomepage.dev/icon: frigate.svg
           gethomepage.dev/widget.type: frigate
-          gethomepage.dev/widget.url: http://frigate.default.svc.cluster.local:5000
+          gethomepage.dev/widget.url: http://frigate.self-hosted.svc.cluster.local:5000
 
     persistence:
       data:
