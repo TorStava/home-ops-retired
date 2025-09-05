@@ -46,6 +46,9 @@ spec:
               capabilities:
                 add:
                   - CHOWN
+        pod:
+          nodeSelector:
+            nfs-colocated: "true"
     service:
       app:
         controller: tubearchivist
