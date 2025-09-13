@@ -34,24 +34,18 @@ spec:
       retries: 3
   values:
     localpv-provisioner:
-      enabled: false
-    openebs-crds:
-      csi:
-        volumeSnapshots:
-          enabled: true
-          keep: true
-    zfs-localpv:
-      enabled: true
-    lvm-localpv:
-      enabled: false
-    mayastor:
-      enabled: false
+      rbac:
+        create: false
+      localpv:
+        enabled: false
     engines:
       local:
         lvm:
           enabled: false
         zfs:
           enabled: true
+        rawfile:
+          enabled: false
       replicated:
         mayastor:
           enabled: true
