@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: openebs-system
+namespace: &namespace openebs-system
 components:
   - ../../components/common
 resources:
@@ -10,6 +10,7 @@ resources:
 patches:
   - target:
       kind: Namespace
+      name: *namespace
     patch: |-
       metadata:
         labels:
